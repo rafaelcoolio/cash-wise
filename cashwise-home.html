@@ -58,6 +58,8 @@
     .world-pin { position:absolute; z-index:3; display:grid; place-items:center; width:48px; height:48px; border:2px solid var(--ink); border-radius:50% 50% 50% 7px; background:var(--lime); transform:rotate(-45deg); box-shadow:4px 4px 0 rgba(23,53,43,.15); }
     .world-pin span { transform:rotate(45deg); font-size:21px; }
     .pin-job { left:31%; top:42%; }.pin-home { right:20%; top:50%; background:var(--orange); }
+    .world-enter { position:absolute; z-index:3; left:50%; bottom:16px; transform:translateX(-50%); padding:12px 20px; border:2px solid var(--ink); border-radius:99px; background:var(--lime); color:var(--ink); font-size:14px; font-weight:800; text-decoration:none; box-shadow:4px 4px 0 var(--orange); }
+    @media(hover:hover) { .world-enter:hover { transform:translateX(-50%) translateY(-2px); filter:brightness(1.05); } }
     .challenge { padding:24px; }
     .label { display:inline-block; padding:6px 9px; border-radius:99px; background:var(--lime); font-size:11px; font-weight:800; letter-spacing:.1em; }
     .challenge h3 { margin:15px 0 9px; font-size:23px; }
@@ -209,6 +211,7 @@
           <section class="card world-card" id="cashville-card" aria-label="Maya's simulated world">
             <div class="world-head"><div class="cashville-brand"><span class="cashville-mark">🏙️</span><div><h3>Cashville</h3><p>Your economic world</p></div></div></div>
             <div class="world-pin pin-job"><span>💼</span></div><div class="world-pin pin-home"><span>🏠</span></div>
+            <a class="world-enter" href="lessons.html">Enter Cashville →</a>
             <div class="city" aria-hidden="true"><i class="building one"></i><i class="building two"></i><i class="building three"></i><i class="building four"></i><i class="building five"></i></div>
           </section>
 
