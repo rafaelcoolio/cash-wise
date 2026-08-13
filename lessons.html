@@ -1,0 +1,249 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Cash Wise lessons help teens learn cash, cards, budgeting, saving, and credit through quick, practical activities."
+    />
+    <title>Lessons | Cash Wise</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="lessons.css" />
+    <script src="lessons.js" defer></script>
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="index.html" aria-label="Cash Wise home">
+        <span class="brand-mark" aria-hidden="true">$</span>
+        <span>cash wise</span>
+      </a>
+      <nav aria-label="Main navigation">
+        <a href="index.html">Home</a>
+        <a class="active" href="lessons.html" aria-current="page">Lessons</a>
+        <a href="#progress">My progress</a>
+      </nav>
+      <button class="menu-button" type="button" aria-label="Open menu" aria-expanded="false">☰</button>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="hero-copy">
+          <p class="eyebrow">MONEY SKILLS FOR REAL LIFE</p>
+          <h1>Money makes more sense when someone explains it clearly.</h1>
+          <p class="hero-text">
+            Learn how cash, cards, budgets, savings, and credit actually work—one quick lesson at a time.
+          </p>
+          <div class="hero-actions">
+            <button class="primary-button cashville-play" type="button">Enter Cashville <span aria-hidden="true">→</span></button>
+            <button class="secondary-button office-play" type="button">Go straight to The Office</button>
+          </div>
+        </div>
+
+        <div class="money-card" aria-label="Example spending breakdown">
+          <div class="money-card-top">
+            <span>This week</span>
+            <span class="pill">On track</span>
+          </div>
+          <p class="balance-label">Money left</p>
+          <p class="balance">$42.50</p>
+          <div class="bar" aria-hidden="true"><span></span></div>
+          <div class="spending-row"><span>Spent</span><strong>$27.50</strong></div>
+          <div class="spending-row"><span>Saving</span><strong>$10.00</strong></div>
+          <div class="coin coin-one">$</div>
+          <div class="coin coin-two">¢</div>
+        </div>
+      </section>
+
+      <section class="progress-card" id="progress" aria-labelledby="progress-title">
+        <div>
+          <p class="eyebrow">YOUR PROGRESS</p>
+          <h2 id="progress-title"><span id="completed-count">0</span> of <span id="lesson-total">56</span> office floors complete</h2>
+          <p id="progress-message">Start with the basics. Your progress is saved on this device.</p>
+        </div>
+        <div class="progress-ring" role="img" aria-label="0 percent complete">
+          <span id="progress-percent">0%</span>
+        </div>
+      </section>
+
+      <section class="lesson-library" aria-labelledby="library-title" hidden>
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">LESSON LIBRARY</p>
+            <h2 id="library-title">Build your money confidence</h2>
+          </div>
+          <div class="filters" aria-label="Filter lessons">
+            <button class="filter active" data-filter="all" type="button">All</button>
+            <button class="filter" data-filter="basics" type="button">Basics</button>
+            <button class="filter" data-filter="spending" type="button">Spending</button>
+            <button class="filter" data-filter="future" type="button">Future you</button>
+          </div>
+        </div>
+
+        <div class="lesson-grid" id="lesson-grid">
+          <article class="lesson-card featured" data-category="basics" data-lesson="cash">
+            <div class="lesson-icon green" aria-hidden="true">$</div>
+            <span class="lesson-number">01</span>
+            <p class="tag">THE BASICS</p>
+            <h3>Cash without the confusion</h3>
+            <p>Count change, read a receipt, spot mistakes, and feel confident paying with bills and coins.</p>
+            <div class="lesson-meta"><span>◷ 6 min</span><span>Beginner</span></div>
+            <button class="lesson-button" type="button">Start lesson <span>→</span></button>
+          </article>
+
+          <article class="lesson-card" data-category="spending" data-lesson="cards">
+            <div class="lesson-icon coral" aria-hidden="true">▰</div>
+            <span class="lesson-number">02</span>
+            <p class="tag">CARDS</p>
+            <h3>Debit or credit?</h3>
+            <p>Know where the money comes from, what interest means, and which card makes sense.</p>
+            <div class="lesson-meta"><span>◷ 8 min</span><span>Beginner</span></div>
+            <button class="lesson-button" type="button">Start lesson <span>→</span></button>
+          </article>
+
+          <article class="lesson-card" data-category="spending" data-lesson="budget">
+            <div class="lesson-icon yellow" aria-hidden="true">◎</div>
+            <span class="lesson-number">03</span>
+            <p class="tag">BUDGETING</p>
+            <h3>Give every dollar a job</h3>
+            <p>Make a simple plan for spending, saving, and having fun without running out early.</p>
+            <div class="lesson-meta"><span>◷ 7 min</span><span>Beginner</span></div>
+            <button class="lesson-button" type="button">Start lesson <span>→</span></button>
+          </article>
+
+          <article class="lesson-card" data-category="future" data-lesson="saving">
+            <div class="lesson-icon blue" aria-hidden="true">↗</div>
+            <span class="lesson-number">04</span>
+            <p class="tag">SAVING</p>
+            <h3>Save for something real</h3>
+            <p>Turn a goal into a weekly amount and learn why starting small still makes a difference.</p>
+            <div class="lesson-meta"><span>◷ 6 min</span><span>Beginner</span></div>
+            <button class="lesson-button" type="button">Start lesson <span>→</span></button>
+          </article>
+
+          <article class="lesson-card" data-category="future" data-lesson="credit">
+            <div class="lesson-icon purple" aria-hidden="true">★</div>
+            <span class="lesson-number">05</span>
+            <p class="tag">CREDIT</p>
+            <h3>Your future money reputation</h3>
+            <p>Discover credit scores, borrowing, minimum payments, and why paying on time matters.</p>
+            <div class="lesson-meta"><span>◷ 9 min</span><span>Intermediate</span></div>
+            <button class="lesson-button" type="button">Start lesson <span>→</span></button>
+          </article>
+
+          <article class="lesson-card" data-category="basics" data-lesson="scams">
+            <div class="lesson-icon red" aria-hidden="true">!</div>
+            <span class="lesson-number">06</span>
+            <p class="tag">STAY SAFE</p>
+            <h3>Spot scams before they get you</h3>
+            <p>Recognize suspicious messages, protect your PIN, and know what to do if money goes missing.</p>
+            <div class="lesson-meta"><span>◷ 7 min</span><span>Beginner</span></div>
+            <button class="lesson-button" type="button">Start lesson <span>→</span></button>
+          </article>
+
+          <article class="lesson-card" data-category="basics" data-lesson="banking">
+            <div class="lesson-icon blue" aria-hidden="true">B</div>
+            <span class="lesson-number">07</span>
+            <p class="tag">BANKING</p>
+            <h3>What banks actually do</h3>
+            <p>Understand checking, savings, deposits, withdrawals, and how to choose an account.</p>
+            <div class="lesson-meta"><span>◷ 8 min</span><span>Beginner</span></div>
+            <button class="lesson-button" type="button">Start lesson <span>→</span></button>
+          </article>
+
+          <article class="lesson-card" data-category="future" data-lesson="interest">
+            <div class="lesson-icon green" aria-hidden="true">%</div>
+            <span class="lesson-number">08</span>
+            <p class="tag">INTEREST</p>
+            <h3>Make time work for you</h3>
+            <p>See how interest can grow savings—or make borrowed money more expensive.</p>
+            <div class="lesson-meta"><span>◷ 9 min</span><span>Intermediate</span></div>
+            <button class="lesson-button" type="button">Start lesson <span>→</span></button>
+          </article>
+
+          <article class="lesson-card" data-category="spending" data-lesson="earning">
+            <div class="lesson-icon yellow" aria-hidden="true">+</div>
+            <span class="lesson-number">09</span>
+            <p class="tag">EARNING</p>
+            <h3>Your first paycheck</h3>
+            <p>Read a pay stub, understand deductions, and know the difference between gross and net pay.</p>
+            <div class="lesson-meta"><span>◷ 8 min</span><span>Beginner</span></div>
+            <button class="lesson-button" type="button">Start lesson <span>→</span></button>
+          </article>
+
+          <article class="lesson-card" data-category="future" data-lesson="investing">
+            <div class="lesson-icon purple" aria-hidden="true">↗</div>
+            <span class="lesson-number">10</span>
+            <p class="tag">INVESTING</p>
+            <h3>Grow money slowly</h3>
+            <p>Learn risk, diversification, and why investing is usually a long-term game.</p>
+            <div class="lesson-meta"><span>◷ 10 min</span><span>Intermediate</span></div>
+            <button class="lesson-button" type="button">Start lesson <span>→</span></button>
+          </article>
+        </div>
+      </section>
+
+      <section class="challenge" aria-labelledby="challenge-title" id="daily-challenge">
+        <div class="challenge-copy">
+          <p class="eyebrow">DAILY CHALLENGE · <span id="daily-date"></span></p>
+          <h2 id="challenge-title">The Corner Store Dash</h2>
+          <p id="daily-description">Race through a surprise money mission. Come back tomorrow for a new one.</p>
+        </div>
+        <div class="daily-actions">
+          <div><strong id="daily-streak">0 day streak</strong><span>Complete one challenge each day</span></div>
+          <button class="primary-button daily-play" type="button">Wake up in Cashville →</button>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <a class="brand footer-brand" href="index.html"><span class="brand-mark">$</span><span>cash wise</span></a>
+      <p>Small lessons. Smarter money choices.</p>
+      <p>© 2026 Cash Wise</p>
+    </footer>
+
+    <dialog class="lesson-modal" aria-labelledby="game-title">
+      <div class="game-topbar">
+        <div>
+          <p class="game-world" id="game-world">MONEY WORLD</p>
+          <h2 id="game-title">Lesson title</h2>
+        </div>
+        <div class="game-mission"><span id="mission-count">Mission 1/3</span><strong id="mission-label">Find the glowing marker</strong></div>
+        <button class="modal-close" type="button" aria-label="Leave game">×</button>
+      </div>
+      <div class="game-shell">
+        <canvas id="game-canvas" width="960" height="540" aria-label="Cash Wise game world. Use W A S D to move your character."></canvas>
+        <div class="game-hud">
+          <div class="wasd-hint" aria-hidden="true"><kbd>W</kbd><div><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd></div><span>Move</span></div>
+          <div class="game-wallet"><span>WALLET</span><strong>💵 $<span id="game-money">0</span></strong><small>● <span id="coin-count">0</span> lesson coins</small></div>
+        </div>
+        <div class="game-dialogue" hidden>
+          <div class="npc-avatar" aria-hidden="true">🙂</div>
+          <div class="dialogue-copy"><strong id="speaker-name">Coach Cash</strong><p id="game-question"></p><div class="game-answers"></div></div>
+        </div>
+        <div class="wake-screen" hidden>
+          <div class="pixel-sun" aria-hidden="true"></div>
+          <p class="eyebrow">A NEW DAY IN CASHVILLE</p>
+          <h3>Good morning!</h3>
+          <p>Get out of bed, explore town, talk to your neighbors, and make today’s money choice.</p>
+          <button class="primary-button start-day-button" type="button">Wake up &amp; start the day</button>
+        </div>
+        <div class="game-finish" hidden>
+          <span class="finish-stars">★ ★ ★</span>
+          <h3>Mission complete!</h3>
+          <p id="finish-message">You earned 3 Cash Coins.</p>
+          <button class="primary-button finish-button" type="button">Back to lessons</button>
+        </div>
+      </div>
+      <div class="mobile-pad" aria-label="Movement controls">
+        <button data-key="w" type="button" aria-label="Move up">▲</button>
+        <div><button data-key="a" type="button" aria-label="Move left">◀</button><button data-key="s" type="button" aria-label="Move down">▼</button><button data-key="d" type="button" aria-label="Move right">▶</button></div>
+      </div>
+    </dialog>
+  </body>
+</html>
