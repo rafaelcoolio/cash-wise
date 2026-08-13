@@ -1,0 +1,387 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="CashWise! helps teens practice real-world money decisions through guided challenges, simulations, and safe workshops.">
+  <title>CashWise! — Money skills for real life</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@600;700;800&display=swap');
+    :root { --ink:#17352b; --muted:#5f746c; --paper:#fbfbf5; --cream:#f1f2df; --lime:#dffc73; --green:#1f6b52; --orange:#ff8a4c; --line:#d9dfd1; --white:#fff; }
+    * { box-sizing:border-box; }
+    html { scroll-behavior:smooth; }
+    body { margin:0; color:var(--ink); background:var(--paper); font-family:"DM Sans",sans-serif; }
+    a { color:inherit; }
+    .wrap { width:min(1160px,calc(100% - 40px)); margin:auto; }
+    nav { height:76px; display:flex; align-items:center; justify-content:space-between; }
+    .brand { position:relative; display:flex; align-items:center; text-decoration:none; isolation:isolate; }
+    .brand-logo { width:118px; height:auto; display:block; }
+    .brand::before { content:""; position:absolute; z-index:-1; width:47px; height:47px; left:35px; top:2px; border:4px solid #ffd84d; border-radius:50%; opacity:0; pointer-events:none; }
+    .links { display:flex; align-items:center; gap:28px; font-size:14px; font-weight:600; }
+    .links a { text-decoration:none; }
+    .button { display:inline-flex; align-items:center; justify-content:center; gap:8px; min-height:48px; padding:0 22px; border:1px solid var(--ink); border-radius:999px; background:var(--ink); color:var(--white); font-weight:700; text-decoration:none; cursor:pointer; transition:.2s transform,.2s box-shadow,.2s filter; }
+    .button:hover { transform:translateY(-2px); box-shadow:0 7px 0 rgba(23,53,43,.13); }
+    .button.secondary { background:transparent; color:var(--ink); }
+    .button.small { min-height:42px; padding:0 18px; }
+    .hero { min-height:650px; padding:64px 0 74px; overflow:hidden; }
+    .hero-grid { display:grid; grid-template-columns:1.05fr .95fr; align-items:center; gap:70px; }
+    .eyebrow { display:inline-flex; gap:8px; align-items:center; padding:7px 12px; border-radius:99px; background:var(--cream); font-size:13px; font-weight:700; }
+    .eyebrow::before { content:""; width:8px; height:8px; border-radius:50%; background:var(--orange); }
+    h1,h2,h3 { font-family:Manrope,sans-serif; margin:0; letter-spacing:-.04em; }
+    h1 { max-width:700px; margin-top:22px; font-size:clamp(48px,6.2vw,78px); line-height:1.02; }
+    h1 span { position:relative; white-space:nowrap; }
+    h1 span::after { content:""; position:absolute; height:12px; left:0; right:0; bottom:4px; z-index:-1; border-radius:10px; background:var(--lime); }
+    .hero-copy p { max-width:590px; margin:24px 0 30px; font-size:19px; line-height:1.65; color:var(--muted); }
+    .actions { display:flex; flex-wrap:wrap; gap:12px; }
+    .micro { margin-top:16px; font-size:13px; color:var(--muted); }
+    .phone-stage { position:relative; min-height:520px; display:grid; place-items:center; }
+    .blob { position:absolute; width:460px; height:460px; border-radius:41% 59% 54% 46%; background:var(--lime); transform:rotate(-8deg); }
+    .phone { position:relative; z-index:2; width:280px; padding:13px; border:3px solid var(--ink); border-radius:38px; background:var(--ink); box-shadow:24px 28px 0 rgba(23,53,43,.13); transform:rotate(4deg); }
+    .screen { min-height:480px; padding:25px 18px; border-radius:26px; background:#fffef7; overflow:hidden; }
+    .app-top { display:flex; justify-content:space-between; align-items:center; font-weight:700; }
+    .avatar { width:34px; height:34px; display:grid; place-items:center; border-radius:50%; background:var(--cream); }
+    .screen h3 { margin-top:30px; font-size:25px; }
+    .progress { height:9px; margin:17px 0 25px; border-radius:9px; background:var(--cream); overflow:hidden; }
+    .progress i { display:block; width:68%; height:100%; background:var(--green); border-radius:inherit; }
+    .challenge { padding:18px; border:1px solid var(--line); border-radius:18px; background:var(--white); }
+    .challenge b { display:block; margin:8px 0; font-size:17px; }
+    .challenge small { color:var(--muted); }
+    .money-row { display:flex; justify-content:space-between; gap:8px; margin-top:14px; }
+    .money-row span { flex:1; padding:10px 4px; border-radius:11px; text-align:center; background:var(--cream); font-size:12px; font-weight:700; }
+    .lesson-window { margin:0 -18px; overflow:hidden; }
+    .lesson-track { display:flex; transition:transform .7s cubic-bezier(.22,.75,.25,1); }
+    .lesson-slide { flex:0 0 100%; padding:0 18px; }
+    .lesson-slide .progress i { width:var(--lesson-progress); }
+    .lesson-dots { display:flex; justify-content:center; gap:7px; margin-top:18px; }
+    .lesson-dot { width:7px; height:7px; border:0; padding:0; border-radius:50%; background:#ccd3bd; transition:width .25s,background .25s; }
+    .lesson-dot.active { width:20px; border-radius:8px; background:var(--green); }
+    .sticker { position:absolute; z-index:3; padding:15px 18px; border:2px solid var(--ink); border-radius:16px; background:var(--white); box-shadow:7px 7px 0 var(--orange); font-weight:700; transform:rotate(-5deg); left:0; bottom:95px; }
+    .problem { padding:105px 0; color:var(--white); background:var(--ink); }
+    .section-head { max-width:730px; }
+    .section-head .kicker { margin-bottom:15px; color:var(--lime); font-weight:700; text-transform:uppercase; letter-spacing:.12em; font-size:12px; }
+    h2 { font-size:clamp(35px,5vw,54px); line-height:1.1; }
+    .section-head p { margin:22px 0 0; color:#bdd0c8; font-size:18px; line-height:1.65; }
+    .problem-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:20px; margin-top:56px; }
+    .problem-card { padding:26px; border:1px solid #3b5b50; border-radius:22px; }
+    .num { color:var(--lime); font:700 13px Manrope; }
+    .problem-card h3 { margin:22px 0 10px; font-size:21px; }
+    .problem-card p { margin:0; color:#bdd0c8; line-height:1.6; }
+    .how { padding:110px 0; }
+    .how-top { display:flex; justify-content:space-between; align-items:end; gap:30px; }
+    .how-top p { max-width:410px; margin:0; color:var(--muted); line-height:1.6; }
+    .steps { display:grid; grid-template-columns:repeat(3,1fr); gap:24px; margin-top:55px; }
+    .step { position:relative; padding:30px; border:1px solid var(--line); border-radius:25px; background:var(--white); }
+    .icon { width:48px; height:48px; display:grid; place-items:center; border-radius:15px; background:var(--lime); font-size:23px; }
+    .step h3 { margin:25px 0 12px; font-size:22px; }
+    .step p { margin:0; color:var(--muted); line-height:1.65; }
+    .world { padding:105px 0; color:var(--white); background:var(--green); overflow:hidden; }
+    .world-grid { display:grid; grid-template-columns:.9fr 1.1fr; gap:70px; align-items:center; }
+    .world-copy p { max-width:540px; color:#d9ebe4; font-size:18px; line-height:1.65; }
+    .world-points { display:grid; gap:14px; margin-top:30px; }
+    .world-point { display:flex; align-items:flex-start; gap:12px; }
+    .world-point i { flex:0 0 28px; height:28px; display:grid; place-items:center; border-radius:50%; background:var(--lime); color:var(--ink); font-style:normal; font-weight:700; }
+    .world-map { position:relative; min-height:470px; padding:28px; border:2px solid var(--ink); border-radius:32px; background:#dff4e9; color:var(--ink); box-shadow:14px 14px 0 var(--lime); }
+    .world-sky { display:flex; justify-content:space-between; font-weight:700; }
+    .world-city { position:absolute; left:28px; right:28px; bottom:28px; height:230px; display:flex; align-items:end; justify-content:space-around; border-bottom:8px solid #8dc6a8; }
+    .building { width:19%; border:3px solid var(--ink); border-bottom:0; border-radius:9px 9px 0 0; background:#fffef7; }
+    .building:nth-child(1) { height:54%; }.building:nth-child(2) { height:82%; background:var(--cream); }.building:nth-child(3) { height:65%; background:var(--lime); }.building:nth-child(4) { height:93%; }
+    .daily-pop { position:absolute; z-index:2; top:92px; left:50%; width:min(310px,82%); padding:20px; transform:translateX(-50%) rotate(-2deg); border:2px solid var(--ink); border-radius:18px; background:var(--white); box-shadow:8px 8px 0 var(--orange); }
+    .try-label { display:inline-block; padding:5px 9px; border-radius:99px; background:var(--lime); color:var(--ink); font-size:11px; font-weight:800; letter-spacing:.12em; }
+    .daily-pop small { color:var(--muted); font-weight:700; }.daily-pop b { display:block; margin:10px 0; font-size:18px; }.daily-pop strong { color:var(--green); }
+    .challenge-choices { display:grid; gap:8px; margin-top:14px; }
+    .choice { width:100%; padding:10px 12px; border:1px solid var(--ink); border-radius:11px; background:var(--paper); color:var(--ink); font:700 12px "DM Sans",sans-serif; text-align:left; cursor:pointer; transition:.18s transform,.18s background,.18s filter; }
+    .choice:hover:not(:disabled) { transform:translateY(-1px); background:var(--cream); }
+    .choice:disabled { cursor:default; opacity:.62; }
+    .choice.correct { background:var(--lime); opacity:1; }
+    .choice.wrong { background:#ffd7c2; opacity:1; }
+    .choice-result { min-height:35px; margin:11px 0 0; font-size:12px; line-height:1.45; }
+    .choice-result.good { color:var(--green); }.choice-result.bad { color:#a84420; }
+    .try-again { display:none; padding:0; border:0; background:none; color:var(--green); font:700 12px "DM Sans",sans-serif; text-decoration:underline; cursor:pointer; }
+    .try-again.show { display:inline; }
+    .benefits { padding:100px 0; background:var(--cream); }
+    .benefit-grid { display:grid; grid-template-columns:1fr 1fr; gap:70px; align-items:center; }
+    .benefit-list { display:grid; gap:12px; margin-top:34px; }
+    .benefit { display:flex; gap:15px; padding:15px 0; border-bottom:1px solid #ccd3bd; }
+    .check { flex:0 0 27px; height:27px; display:grid; place-items:center; border-radius:50%; background:var(--green); color:white; font-size:14px; }
+    .benefit b { display:block; margin-bottom:5px; }
+    .benefit span { color:var(--muted); line-height:1.5; }
+    .scenario { padding:30px; border:2px solid var(--ink); border-radius:28px; background:var(--paper); box-shadow:13px 13px 0 var(--orange); }
+    .scenario-top { display:flex; justify-content:space-between; align-items:center; }
+    .pill { padding:6px 10px; border-radius:99px; background:var(--lime); font-size:12px; font-weight:700; }
+    .scenario h3 { margin:26px 0 8px; font-size:25px; }
+    .scenario > p { color:var(--muted); line-height:1.55; }
+    .budget { display:grid; gap:10px; margin-top:24px; }
+    .budget-line { display:flex; justify-content:space-between; padding:13px 0; border-bottom:1px solid var(--line); }
+    .budget-line.total { font-weight:700; border:0; }
+    .trust { padding:110px 0; text-align:center; }
+    .quote { max-width:820px; margin:36px auto 20px; font:700 clamp(27px,4vw,42px)/1.3 Manrope; letter-spacing:-.035em; }
+    .quote-mark { color:var(--orange); font-size:65px; line-height:.5; }
+    .person { color:var(--muted); }
+    .trust-note { max-width:720px; margin:48px auto 0; padding-top:28px; border-top:1px solid var(--line); font-size:14px; color:var(--muted); }
+    .cta { margin-bottom:80px; }
+    .cta-box { display:flex; justify-content:space-between; align-items:center; gap:30px; padding:55px; border-radius:30px; background:var(--lime); }
+    .cta h2 { max-width:650px; }
+    footer { padding:25px 0 45px; border-top:1px solid var(--line); }
+    .footer-row { display:flex; justify-content:space-between; align-items:center; gap:20px; color:var(--muted); font-size:13px; }
+    .scroll-reveal { opacity:0; transform:translateY(28px); transition:opacity .7s ease,transform .7s cubic-bezier(.22,.75,.25,1); }
+    .scroll-reveal.is-visible { opacity:1; transform:translateY(0); }
+    .brand-logo,.phone,.problem-card,.step,.world-map,.daily-pop,.scenario,.benefit,.icon,.sticker { transition:transform .22s ease,filter .22s ease,box-shadow .22s ease; }
+    @media (hover:hover) {
+      .problem-card:hover,.step:hover,.world-map:hover,.scenario:hover,.benefit:hover,.icon:hover { transform:scale(1.025); filter:brightness(1.045); }
+      .brand:hover::before { animation:bulb-ring .8s ease-out; }
+      .brand:hover .brand-logo { animation:bulb-on .8s ease-out forwards; }
+      body:has(.brand:hover) main { animation:screen-vibrate .38s ease-in-out; }
+      .phone:hover { transform:rotate(4deg) scale(1.025); filter:brightness(1.04); }
+      .daily-pop:hover { transform:translateX(-50%) rotate(-2deg) scale(1.025); filter:brightness(1.04); }
+      .sticker:hover { transform:rotate(-5deg) scale(1.035); filter:brightness(1.05); }
+      .button:hover { transform:translateY(-2px) scale(1.025); filter:brightness(1.08); }
+      .choice:hover:not(:disabled) { transform:translateY(-1px) scale(1.015); filter:brightness(1.04); }
+    }
+    @keyframes bulb-ring {
+      0% { opacity:0; transform:scale(.45); box-shadow:0 0 0 0 rgba(255,216,77,.85); }
+      25% { opacity:1; }
+      100% { opacity:0; transform:scale(2.1); box-shadow:0 0 28px 16px rgba(255,216,77,0); }
+    }
+    @keyframes bulb-on {
+      0%,18% { transform:scale(1); filter:brightness(1); }
+      35% { transform:scale(1.08) rotate(-2deg); filter:brightness(1.35) drop-shadow(0 0 5px #ffd84d); }
+      55% { transform:scale(1.04) rotate(2deg); }
+      100% { transform:scale(1.045); filter:brightness(1.18) drop-shadow(0 0 9px #ffd84d); }
+    }
+    @keyframes screen-vibrate {
+      0%,100% { transform:translate(0); }
+      15% { transform:translate(-3px,1px); }
+      30% { transform:translate(3px,-1px); }
+      45% { transform:translate(-2px,-1px); }
+      60% { transform:translate(2px,1px); }
+      75% { transform:translate(-1px,0); }
+    }
+    .modal { display:none; position:fixed; inset:0; z-index:10; place-items:center; padding:20px; background:rgba(23,53,43,.7); }
+    .modal.open { display:grid; }
+    .modal-card { width:min(480px,100%); padding:32px; border-radius:25px; background:var(--paper); box-shadow:0 30px 80px rgba(0,0,0,.25); }
+    .modal-card h2 { font-size:34px; }
+    .modal-card p { color:var(--muted); }
+    .field { display:grid; gap:7px; margin:18px 0; font-weight:700; font-size:14px; }
+    .field input { width:100%; padding:14px; border:1px solid var(--line); border-radius:12px; background:white; font:inherit; }
+    .close { float:right; border:0; background:none; font-size:25px; cursor:pointer; }
+    @media (max-width:850px) {
+      .links a:not(.button) { display:none; }
+      .hero-grid,.benefit-grid,.world-grid { grid-template-columns:1fr; }
+      .hero-copy { text-align:center; }
+      .hero-copy p { margin-left:auto; margin-right:auto; }
+      .actions { justify-content:center; }
+      .phone-stage { min-height:500px; }
+      .problem-grid,.steps { grid-template-columns:1fr; }
+      .how-top { display:block; }
+      .how-top p { margin-top:20px; }
+      .cta-box { display:block; text-align:center; padding:40px 25px; }
+      .cta-box .button { margin-top:25px; }
+    }
+    @media (max-width:520px) {
+      .wrap { width:min(100% - 26px,1160px); }
+      .links .button { display:none; }
+      .hero { padding-top:38px; }
+      .phone-stage { transform:scale(.86); margin:-30px 0; }
+      .sticker { left:-20px; }
+      .problem,.how,.benefits,.trust { padding:78px 0; }
+      .footer-row { display:block; text-align:center; }
+    }
+    @media (prefers-reduced-motion:reduce) {
+      html { scroll-behavior:auto; }
+      .scroll-reveal,.scroll-reveal.is-visible { opacity:1; transform:none; transition:none; }
+      .lesson-track { transition:none; }
+      .brand:hover::before { animation:none; opacity:.7; transform:scale(1.3); }
+      .brand:hover .brand-logo { animation:none; filter:brightness(1.15) drop-shadow(0 0 8px #ffd84d); }
+      body:has(.brand:hover) main { animation:none; }
+    }
+  </style>
+</head>
+<body>
+  <header class="wrap">
+    <nav aria-label="Main navigation">
+      <a class="brand" href="#" aria-label="CashWise! home"><img class="brand-logo" src="cashwise-logo.svg" alt="Cash Wise — smart money skills"></a>
+      <div class="links"><a href="#world">Your world</a><a href="#how">How it works</a><a href="#trust">For parents</a><a class="button small open-modal" href="#signup">Start free</a></div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="wrap hero-grid">
+        <div class="hero-copy">
+          <span class="eyebrow">Made for teens. Trusted by parents.</span>
+          <h1>Money skills for <span>real life.</span></h1>
+          <p>CashWise! gives every teen a personal economic world where daily choices build real-life money skills—before real money is on the line.</p>
+          <div class="actions"><a class="button" href="#daily-demo">Try a free challenge →</a><a class="button secondary" href="#how">See how it works</a></div>
+          <div class="micro">No bank account needed · Parent-supported · Ages 13–17</div>
+        </div>
+        <div class="phone-stage" aria-label="CashWise! app preview">
+          <div class="blob"></div>
+          <div class="phone" id="lesson-phone"><div class="screen">
+            <div class="app-top"><span>Hi, Maya 👋</span><span class="avatar">M</span></div>
+            <div class="lesson-window" aria-label="Featured CashWise lessons">
+              <div class="lesson-track">
+                <section class="lesson-slide" style="--lesson-progress:68%" aria-label="Budgeting lesson">
+                  <h3>Your money mission</h3><div class="progress"><i></i></div>
+                  <div class="challenge"><small>WEEK 3 · BUDGETING</small><b>Make payday last</b><small>You earned a simulated paycheck of $1,500. Build a plan that covers needs, wants, and savings.</small><div class="money-row"><span>Needs<br>$750</span><span>Wants<br>$300</span><span>Save<br>$450</span></div></div>
+                </section>
+                <section class="lesson-slide" style="--lesson-progress:42%" aria-label="Credit lesson">
+                  <h3>Credit confidence</h3><div class="progress"><i></i></div>
+                  <div class="challenge"><small>WEEK 4 · CREDIT</small><b>Choose the smarter card</b><small>Compare interest rates, fees, and rewards before deciding which offer costs less.</small><div class="money-row"><span>APR<br>18%</span><span>Fee<br>$0</span><span>Limit<br>$500</span></div></div>
+                </section>
+                <section class="lesson-slide" style="--lesson-progress:84%" aria-label="Saving lesson">
+                  <h3>Grow your savings</h3><div class="progress"><i></i></div>
+                  <div class="challenge"><small>WEEK 5 · SAVING</small><b>Reach your first goal</b><small>Plan how much to save each week to build a $600 emergency fund in six months.</small><div class="money-row"><span>Goal<br>$600</span><span>Weekly<br>$25</span><span>Saved<br>$350</span></div></div>
+                </section>
+              </div>
+            </div>
+            <div class="lesson-dots" aria-hidden="true"><span class="lesson-dot active"></span><span class="lesson-dot"></span><span class="lesson-dot"></span></div>
+          </div></div>
+          <div class="sticker">🏆 3-week streak!</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="world" id="world">
+      <div class="wrap world-grid">
+        <div class="world-copy">
+          <div class="section-head"><div class="kicker">Your world. Your economy.</div><h2>Build a life one smart choice at a time.</h2></div>
+          <p>Every teen enters a personalized life simulation with income, expenses, goals, and unexpected events. Each day brings a new decision with realistic consequences.</p>
+          <div class="world-points">
+            <div class="world-point"><i>1</i><span><b>A new challenge appears daily</b><br>Choose how to handle work, spending, saving, credit, and surprises.</span></div>
+            <div class="world-point"><i>2</i><span><b>Work, earn, and learn</b><br>Take on jobs, earn simulated income, and build a practical understanding of how an economy works.</span></div>
+            <div class="world-point"><i>3</i><span><b>Earn realistic local currency</b><br>Rewards use simulated dollars, pounds, euros, or the teen’s selected currency—not real cash.</span></div>
+          </div>
+        </div>
+        <div class="world-map" aria-label="Example CashWise economic world">
+          <div class="world-sky"><span>🌤️ Cashville</span><span>Balance: <strong id="world-balance">$1,275</strong></span></div>
+          <div class="daily-pop" id="daily-demo">
+            <span class="try-label">TRY ME</span>
+            <b>Your phone still works, but a new model is on sale. What do you do?</b>
+            <div class="challenge-choices">
+              <button class="choice" type="button" data-result="correct" data-change="80">Keep my phone and save the money</button>
+              <button class="choice" type="button" data-result="wrong" data-change="-650">Buy the new phone for $650</button>
+            </div>
+            <p class="choice-result" aria-live="polite">Choose an answer to see what happens.</p>
+            <button class="try-again" type="button">Try again</button>
+          </div>
+          <div class="world-city" aria-hidden="true"><span class="building"></span><span class="building"></span><span class="building"></span><span class="building"></span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="problem">
+      <div class="wrap">
+        <div class="section-head"><div class="kicker">The problem</div><h2>Adult money decisions arrive before most teens feel ready.</h2><p>Watching another video isn't enough. Teens need a safe place to make choices, see consequences, and build confidence through practice.</p></div>
+        <div class="problem-grid">
+          <article class="problem-card"><span class="num">01</span><h3>Lessons feel theoretical</h3><p>Budgeting and credit are hard to understand without decisions that feel relevant to everyday life.</p></article>
+          <article class="problem-card"><span class="num">02</span><h3>Free content lacks feedback</h3><p>Videos explain concepts, but rarely show teens whether they can apply them independently.</p></article>
+          <article class="problem-card"><span class="num">03</span><h3>Parents lack a roadmap</h3><p>Families want to talk about money, but often don't know where—or when—to begin.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="how" id="how">
+      <div class="wrap">
+        <div class="how-top"><h2>Learn it. Practice it.<br>Own it.</h2><p>A guided path turns intimidating financial topics into small, achievable weekly wins.</p></div>
+        <div class="steps">
+          <article class="step"><div class="icon">🎯</div><h3>Choose a goal</h3><p>Teens start with what matters to them—from saving for a first car to understanding a paycheck.</p></article>
+          <article class="step"><div class="icon">🕹️</div><h3>Make real choices</h3><p>Interactive simulations introduce income, bills, surprise expenses, credit, and tradeoffs.</p></article>
+          <article class="step"><div class="icon">🌱</div><h3>Build confidence</h3><p>Personal feedback, weekly challenges, and parent conversation prompts reinforce progress.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="benefits" id="benefits">
+      <div class="wrap benefit-grid">
+        <div><div class="section-head"><div class="kicker" style="color:var(--green)">Built for better habits</div><h2>Practice without the expensive mistakes.</h2></div>
+          <div class="benefit-list">
+            <div class="benefit"><span class="check">✓</span><div><b>Realistic simulations</b><span>Practice paychecks, bills, savings goals, loans, and unexpected costs.</span></div></div>
+            <div class="benefit"><span class="check">✓</span><div><b>Personalized learning</b><span>Activities adapt to each teen's knowledge, pace, and goals.</span></div></div>
+            <div class="benefit"><span class="check">✓</span><div><b>Parent-visible progress</b><span>Simple updates and prompts make family money conversations easier.</span></div></div>
+            <div class="benefit"><span class="check">✓</span><div><b>Safe, guided support</b><span>Moderated workshops and simulated money keep learning protected.</span></div></div>
+          </div>
+        </div>
+        <aside class="scenario"><div class="scenario-top"><b>Surprise expense</b><span class="pill">SIMULATION</span></div><h3>Your car needs a $300 repair.</h3><p>You have $410 saved. What changes in this month's plan?</p><div class="budget"><div class="budget-line"><span>Current savings</span><b>$410</b></div><div class="budget-line"><span>Car repair</span><b>− $300</b></div><div class="budget-line total"><span>Remaining cushion</span><b>$110</b></div></div></aside>
+      </div>
+    </section>
+
+    <section class="trust" id="trust">
+      <div class="wrap"><div class="quote-mark">“</div><p class="quote">The first time my daughter explained her own budget, I knew this was different from another online course.</p><p class="person"><b>Sample parent experience</b> · Based on the CashWise! learning model</p><p class="trust-note">CashWise! is an early-stage concept. This example illustrates the intended customer outcome and is not presented as a verified customer testimonial.</p></div>
+    </section>
+
+    <section class="cta"><div class="wrap"><div class="cta-box"><h2>Give your teen a head start money can't buy later.</h2><button class="button" type="button" aria-label="Start today — coming soon">Start today →</button></div></div></section>
+  </main>
+
+  <footer><div class="wrap footer-row"><a class="brand" href="#" aria-label="CashWise! home"><img class="brand-logo" src="cashwise-logo.svg" alt="Cash Wise — smart money skills"></a><span>Financial practice for the next generation.</span><span>© 2026 CashWise!</span></div></footer>
+
+  <div class="modal" id="signup" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+    <div class="modal-card"><button class="close" aria-label="Close">×</button><h2 id="modal-title">Grow money confidence.</h2><p>Join the early-access list and receive a free teen budgeting challenge.</p><form id="waitlist"><label class="field">Parent or guardian email<input type="email" required placeholder="you@example.com"></label><button class="button" type="submit">Get the free challenge</button></form><p id="success" hidden><b>You're on the list!</b> Your first challenge is on its way.</p></div>
+  </div>
+
+  <script>
+    const modal=document.getElementById('signup');
+    document.querySelectorAll('.open-modal').forEach(a=>a.addEventListener('click',e=>{e.preventDefault();modal.classList.add('open');modal.querySelector('input').focus();}));
+    modal.querySelector('.close').addEventListener('click',()=>modal.classList.remove('open'));
+    modal.addEventListener('click',e=>{if(e.target===modal)modal.classList.remove('open')});
+    document.addEventListener('keydown',e=>{if(e.key==='Escape')modal.classList.remove('open')});
+    document.getElementById('waitlist').addEventListener('submit',e=>{e.preventDefault();e.target.hidden=true;document.getElementById('success').hidden=false;});
+    const lessonPhone=document.getElementById('lesson-phone');
+    const lessonTrack=lessonPhone.querySelector('.lesson-track');
+    const lessonDots=[...lessonPhone.querySelectorAll('.lesson-dot')];
+    let lessonIndex=0,lessonDirection=1,lessonTimer;
+    function showLesson(index){
+      lessonIndex=index;
+      lessonTrack.style.transform=`translateX(-${lessonIndex*100}%)`;
+      lessonDots.forEach((dot,i)=>dot.classList.toggle('active',i===lessonIndex));
+    }
+    function advanceLesson(){
+      if(lessonIndex===lessonDots.length-1)lessonDirection=-1;
+      if(lessonIndex===0)lessonDirection=1;
+      showLesson(lessonIndex+lessonDirection);
+    }
+    function startLessons(){clearInterval(lessonTimer);if(!window.matchMedia('(prefers-reduced-motion: reduce)').matches)lessonTimer=setInterval(advanceLesson,3200);}
+    function stopLessons(){clearInterval(lessonTimer);}
+    lessonPhone.addEventListener('mouseenter',stopLessons);
+    lessonPhone.addEventListener('mouseleave',startLessons);
+    lessonPhone.addEventListener('focusin',stopLessons);
+    lessonPhone.addEventListener('focusout',startLessons);
+    startLessons();
+    const dailyDemo=document.getElementById('daily-demo');
+    const worldBalance=document.getElementById('world-balance');
+    const demoChoices=[...dailyDemo.querySelectorAll('.choice')];
+    const choiceResult=dailyDemo.querySelector('.choice-result');
+    const tryAgain=dailyDemo.querySelector('.try-again');
+    const startingBalance=1275;
+    function formatBalance(amount){return amount.toLocaleString('en-US',{style:'currency',currency:'USD',maximumFractionDigits:0});}
+    demoChoices.forEach(choice=>choice.addEventListener('click',()=>{
+      const isCorrect=choice.dataset.result==='correct';
+      const change=Number(choice.dataset.change);
+      demoChoices.forEach(button=>button.disabled=true);
+      choice.classList.add(isCorrect?'correct':'wrong');
+      worldBalance.textContent=formatBalance(startingBalance+change);
+      choiceResult.className=`choice-result ${isCorrect?'good':'bad'}`;
+      choiceResult.innerHTML=isCorrect
+        ? '<strong>Smart choice! +$80</strong><br>You kept a working phone and moved closer to your savings goal.'
+        : '<strong>That choice costs $650.</strong><br>Your balance dropped, leaving less for emergencies and goals.';
+      tryAgain.classList.add('show');
+    }));
+    tryAgain.addEventListener('click',()=>{
+      demoChoices.forEach(button=>{button.disabled=false;button.classList.remove('correct','wrong');});
+      worldBalance.textContent=formatBalance(startingBalance);
+      choiceResult.className='choice-result';
+      choiceResult.textContent='Choose an answer to see what happens.';
+      tryAgain.classList.remove('show');
+    });
+    const revealTargets=document.querySelectorAll('main section .wrap > *, footer .wrap');
+    if(window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+      revealTargets.forEach(element=>element.classList.add('is-visible'));
+    }else{
+      revealTargets.forEach(element=>element.classList.add('scroll-reveal'));
+      const revealObserver=new IntersectionObserver(entries=>{
+        entries.forEach(entry=>entry.target.classList.toggle('is-visible',entry.isIntersecting));
+      },{threshold:.12,rootMargin:'0px 0px -7% 0px'});
+      revealTargets.forEach(element=>revealObserver.observe(element));
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -25 240 175" role="img" aria-labelledby="title desc">
+  <title id="title">Cash Wise logo</title>
+  <desc id="desc">A natural modern lightbulb above the words Cash Wise.</desc>
+  <g fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M93 58c-7-6-11-15-10-25 1-20 17-34 37-34s36 14 37 34c1 11-4 20-12 27-7 5-10 11-10 19h-30c0-9-4-15-12-21Z" fill="#dffc73" stroke="#17352b" stroke-width="7"/>
+    <path d="M104 89h32M108 100h24M114 110h12" stroke="#17352b" stroke-width="7"/>
+    <path d="M120-9v-11M76 8l-8-9M164 8l8-9M63 39H50M177 39h13" stroke="#ff8a4c" stroke-width="6"/>
+    <path d="M108 51c3-8 9-13 18-16" stroke="#1f6b52" stroke-width="5"/>
+  </g>
+  <text x="120" y="143" text-anchor="middle" fill="#17352b" font-family="Manrope, Arial, sans-serif" font-size="32" font-weight="800" letter-spacing="-1.3">Cash Wise</text>
+</svg>
